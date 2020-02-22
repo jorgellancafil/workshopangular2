@@ -17,6 +17,9 @@ export class GetinfoComponent implements OnInit {
 
   getData() {
     console.log("listo para preguntar", this.url);
+    this.backend.exeGet(this.url).subscribe(res => {
+      console.log("res -> ", res);
+    })
   }
 
 }
