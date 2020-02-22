@@ -9,6 +9,7 @@ import { BackendService } from '../services/backend.service';
 export class GetinfoComponent implements OnInit {
 
   url: any = "https://thesimpsonsquoteapi.glitch.me/quotes";
+  arrayInfo: any;
 
   constructor(private backend: BackendService) { }
 
@@ -19,6 +20,7 @@ export class GetinfoComponent implements OnInit {
     console.log("listo para preguntar", this.url);
     this.backend.exeGet(this.url).subscribe(res => {
       console.log("res -> ", res);
+      this.arrayInfo = res;
     })
   }
 
