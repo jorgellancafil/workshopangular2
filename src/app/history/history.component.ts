@@ -14,13 +14,33 @@ export class HistoryComponent implements OnInit, OnChanges {
 
     this.connect._onDataHistory.subscribe(res => {
       console.log("HistoryComponent -> connect -> ", res);
-      this.setList(res);
+      if (res) {
+        this.setList(res);
+      }
+
     })
 
   }
 
   setList(item: any) {
+    item["active"] = 0;
     this.list.push(item);
+    this.evaluateLast();
+  }
+
+  evaluateLast() {
+    if (this.list) {
+      let count: any = this.list.length;
+      console.log("count -> ", count);
+
+      for (let i in this.list) {
+        this.list[i].active = 0;
+      }
+
+      this.list[count - 1]["active"] = 1;
+    }
+
+
   }
 
   ngOnInit() {
