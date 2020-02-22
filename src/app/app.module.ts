@@ -7,6 +7,8 @@ import { MainComponent } from './main/main.component';
 import { CardComponent } from './card/card.component';
 import { HistoryComponent } from './history/history.component';
 import { GetinfoComponent } from './getinfo/getinfo.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { GetinfoComponent } from './getinfo/getinfo.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
