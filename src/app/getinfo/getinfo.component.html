@@ -1,6 +1,6 @@
-<form>
-  <div class="form-group">
-    <label for="formGroupExampleInput">Consultor de API</label>
-    <input type="text" class="form-control">
-  </div>
-</form>
+<div class="form-group">
+  <label>Consultor de API</label>
+  <input type="text" [(ngModel)]="url" class="form-control">
+</div>
+
+<button name="button" (click)="getData()">Consultar</button>

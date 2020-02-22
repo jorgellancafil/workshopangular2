@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetinfoComponent implements OnInit {
 
+  url: any = "www.google.cl";
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  getData() {
+
+    console.log("listo para preguntar", this.url);
   }
 
 }
