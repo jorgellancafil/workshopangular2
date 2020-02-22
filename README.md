@@ -1,27 +1,84 @@
-# Superproyecto
+#inout y outputs
+@Input() example: any;
+@Output() example2 = new EventEmitter();
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+#BehaviorSubject
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
-## Development server
+@Injectable()
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+export class ConnectService {
 
-## Code scaffolding
+  _onDataHistory: BehaviorSubject<any> = new BehaviorSubject({});
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  constructor() {
+  }
 
-## Build
+  setHistory(item: any) {
+    this._onDataHistory.next(item);
+  }
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+}
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#HTTP_INTERCEPTORS
+import { Injectable } from "@angular/core";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Observable, throwError } from "rxjs";
+import { catchError, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+@Injectable()
+export class GlobalHttpInterceptorService implements HttpInterceptor {
 
-## Further help
+  catchEvent: any;
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  constructor(
+    public _route: Router,
+  ) { }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler):
+    Observable<HttpEvent<any>> {
+
+    this.catchEvent = req;
+
+    return next.handle(req).pipe(
+
+      map((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse) {
+
+          //this._remote.backendloading(false);
+          console.log("working back");
+
+          return event;
+        }
+      }),
+
+      catchError((error) => {
+
+        //this._remote.backendloading(false);
+        switch (error.status) {
+          case 401: {
+            //this._snackBar.open("Sesión ha expirado");
+            return;
+
+          }
+
+          case 500: {
+
+          }
+          default: {
+
+            return throwError(error);
+          }
+        }
+      })
+    )
+  }
+
+  redirectLogin() {
+
+  }
+}
