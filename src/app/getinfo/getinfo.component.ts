@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendService } from '../services/backend.service';
 
 @Component({
   selector: 'getinfo',
@@ -9,7 +10,7 @@ export class GetinfoComponent implements OnInit {
 
   url: any = "www.google.cl";
 
-  constructor() { }
+  constructor(private backend: BackendService) { }
 
   ngOnInit() {
   }
