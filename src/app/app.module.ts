@@ -9,6 +9,7 @@ import { HistoryComponent } from './history/history.component';
 import { GetinfoComponent } from './getinfo/getinfo.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BackendService } from './services/backend.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    BackendService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

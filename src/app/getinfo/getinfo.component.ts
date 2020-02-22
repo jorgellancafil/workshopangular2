@@ -15,7 +15,6 @@ export class GetinfoComponent implements OnInit {
   }
 
   getData() {
-
     console.log("listo para preguntar", this.url);
   }
 
