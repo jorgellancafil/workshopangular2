@@ -9,8 +9,15 @@ import { Component } from "@angular/core";
 })
 
 export class MainComponent {
+
+  eventRes: any;
+
   constructor() {
 
+  }
+
+  receptor(event: any) {
+    this.eventRes = event;
   }
 
 

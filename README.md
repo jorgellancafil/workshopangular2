@@ -23,6 +23,12 @@ export class ConnectService {
 
 
 #HTTP_INTERCEPTORS
+
+{ provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true },
+
+##
+
+
 import { Injectable } from "@angular/core";
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";

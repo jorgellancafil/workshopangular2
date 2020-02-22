@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BackendService } from '../services/backend.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { BackendService } from '../services/backend.service';
 export class GetinfoComponent implements OnInit {
 
   url: any = "https://thesimpsonsquoteapi.glitch.me/quotes";
-  arrayInfo: any;
+  @Output() outGetInfo = new EventEmitter();
 
   constructor(private backend: BackendService) { }
 
@@ -19,8 +19,7 @@ export class GetinfoComponent implements OnInit {
   getData() {
     console.log("listo para preguntar", this.url);
     this.backend.exeGet(this.url).subscribe(res => {
-      console.log("res -> ", res);
-      this.arrayInfo = res;
+      this.outGetInfo.emit(res[0]);
     })
   }
 
