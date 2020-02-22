@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { ConnectService } from '../services/connect.service';
 
 @Component({
   selector: 'history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss']
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit, OnChanges {
 
-  constructor() { }
+  list: any = [];
 
-  ngOnInit(): void {
+  constructor(private connect: ConnectService) {
+
+    this.connect._onDataHistory.subscribe(res => {
+      console.log("HistoryComponent -> connect -> ", res);
+      this.setList(res);
+    })
+
+  }
+
+  setList(item: any) {
+    this.list.push(item);
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnChanges() {
+
   }
 
 }

@@ -26,7 +26,7 @@ import { BackendService } from './services/backend.service';
     HttpClientModule,
   ],
   providers: [
-    BackendService
+
   ],
   bootstrap: [AppComponent]
 })
