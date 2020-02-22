@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-getinfo',
+  selector: 'getinfo',
   templateUrl: './getinfo.component.html',
   styleUrls: ['./getinfo.component.scss']
 })
