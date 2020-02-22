@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BackendService {
 
+  ObsGet: Observable<any>;
+
   constructor(private http: HttpClient) {
   }
 

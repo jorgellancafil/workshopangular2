@@ -8,7 +8,7 @@ import { BackendService } from '../services/backend.service';
 })
 export class GetinfoComponent implements OnInit {
 
-  url: any = "www.google.cl";
+  url: any = "https://thesimpsonsquoteapi.glitch.me/quotes";
 
   constructor(private backend: BackendService) { }
 
